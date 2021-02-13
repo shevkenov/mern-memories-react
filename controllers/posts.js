@@ -94,5 +94,5 @@ export const likedPost = async (req, res) => {
 }
 
 export const allRouts = (req, res) => {
-    res.sendFile('../client/build/index.html');
+    res.send('My mern memories!');
 }
