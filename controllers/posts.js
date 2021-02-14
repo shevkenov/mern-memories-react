@@ -92,7 +92,3 @@ export const likedPost = async (req, res) => {
         res.status(400).json({message: error})
     }
 }
-
-export const allRouts = (req, res) => {
-    res.send('My mern memories!');
-}

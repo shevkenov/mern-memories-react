@@ -19,6 +19,10 @@ app.use(cors());
 app.use('/posts', routes);
 app.use(express.static('./client/build'));
 
+app.get('*', (req, res) => {
+  res.send('My mern memories!');
+})
+
 mongoose.connect(connString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
