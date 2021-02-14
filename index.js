@@ -1,4 +1,5 @@
 import express from 'express';
+import * as path from 'path';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -17,10 +18,11 @@ app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 app.use(cors());
 
 app.use('/posts', routes);
+
 app.use(express.static('./client/build'));
 
 app.get('*', (req, res) => {
-  res.send('My mern memories!');
+  res.sendFile(path.resolve('./client/build/index.html'));
 })
 
 mongoose.connect(connString, {
