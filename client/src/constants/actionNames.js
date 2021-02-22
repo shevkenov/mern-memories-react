@@ -6,3 +6,6 @@ export const LIKED_POST = "LIKED_POST";
 export const UPDATE_POST = "UPDATE_POST";
 export const SET_POST_ID = "SET_POST_ID";
 export const CLEAR_POST_ID = "CLEAR_POST_ID";
+
+export const LOGIN = 'LOGIN';
+export const LOGOUT = 'LOGOUT';
