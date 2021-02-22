@@ -56,3 +56,7 @@ export const setPostId = (id) => (dispatch) => {
 export const clearPostId = () => (dispatch) => {
     dispatch({type: actionNames.CLEAR_POST_ID})
 }
+
+export const login = (form) => (dispatch) => {
+    dispatch({type: actionNames.LOGIN})
+}
