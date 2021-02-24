@@ -57,6 +57,24 @@ export const clearPostId = () => (dispatch) => {
     dispatch({type: actionNames.CLEAR_POST_ID})
 }
 
-export const login = (form) => (dispatch) => {
-    dispatch({type: actionNames.LOGIN})
+export const login = (form, {push}) => async(dispatch) => {
+    try {
+        const {data} = await api.login(form);
+        console.log(data);
+        
+        dispatch({type: actionNames.LOGIN, payload: data})
+        push('/');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const signUp = (form, {push}) => async(dispatch) => {
+    try {
+        const {data} = api.signUp(form);
+        dispatch({type: actionNames.LOGIN, data})
+        push('/')
+    } catch (error) {
+        console.log(error)
+    }
 }
