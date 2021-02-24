@@ -3,8 +3,9 @@ import { Container, Paper, Avatar, Typography, Grid, Button } from '@material-ui
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useSelector, useDispatch } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
+import { useHistory } from 'react-router-dom';
 
-import { login } from '../../actions'
+import { login, signUp } from '../../actions'
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './Icon'
@@ -13,8 +14,8 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
 
 const Auth = () => {
     const dispatch = useDispatch();
-    const { auth } = useSelector(state => state);
-    console.log(auth);
+    const histroy = useHistory();
+
     const classes = useStyles();
     const [isSignup, setSignup] = useState('false');
     const [form, setForm] = useState(initialState);
@@ -30,15 +31,19 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login(form));
+        if(isSignup){
+            dispatch(signUp(form, histroy));
+        }else{
+            dispatch(login(form, histroy));
+        }
     }
 
     const googleSuccess = () => {
-        console.log('Succeed')
+        console.log('Google Login Succeed');
     }
 
     const googleError = () => {
-
+        console.log('Google login filed');
     }
 
     return (
@@ -67,7 +72,7 @@ const Auth = () => {
                         {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
                     <GoogleLogin
-                        clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
+                        clientId="598642521694-evtu9843jgf6tpu5mg8m69qqshqbrt4r.apps.googleusercontent.com"
                         render={(renderProps) => (
                             <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                                 Google Sign In
