@@ -1,14 +1,16 @@
 import * as actionNames from '../constants/actionNames';
 
-const initialState = { isLoggedIn: false };
+const initialState = { isLoggedIn: false, loading: false, authData: null, error: null };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case actionNames.LOGIN:
-            return { ...state, isLoggedIn: true }
+            localStorage.setItem('token', action.payload.token);
+            return { ...state, isLoggedIn: true, authData: action.payload, loading: false}
 
         case actionNames.LOGOUT:
-            return {...state, isLoggedIn: false}
+            localStorage.clear();
+            return initialState;
     }
 
     return state
