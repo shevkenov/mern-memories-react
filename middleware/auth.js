@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import { CLIENT_RENEG_WINDOW } from 'tls';
 
 const secret = 'something very secret';
 
