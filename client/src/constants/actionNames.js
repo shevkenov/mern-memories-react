@@ -9,3 +9,5 @@ export const CLEAR_POST_ID = "CLEAR_POST_ID";
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
+export const LOGIN_START = 'LOGIN_START';
+export const LOGIN_ERROR = 'LOGIN_ERROR';
