@@ -59,13 +59,15 @@ export const clearPostId = () => (dispatch) => {
 
 export const login = (form, {push}) => async(dispatch) => {
     try {
+        dispatch({type: actionNames.LOGIN_START})
+        
         const {data} = await api.login(form);
-        console.log(data);
         
         dispatch({type: actionNames.LOGIN, payload: data})
         push('/');
     } catch (error) {
         console.log(error);
+        dispatch({type: actionNames.LOGIN_ERROR, payload: 'Incorrect username or password!'})
     }
 }
 
@@ -75,6 +77,7 @@ export const signUp = (form, {push}) => async(dispatch) => {
         dispatch({type: actionNames.LOGIN, data})
         push('/')
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        dispatch({type: actionNames.LOGIN_ERROR, payload: 'Username already exists!'})
     }
 }
