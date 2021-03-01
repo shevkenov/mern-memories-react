@@ -27,5 +27,10 @@ export default makeStyles(theme => ({
     googleButton: {
       marginBottom: theme.spacing(2),
     },
+    progress: {
+      display: "flex",
+      justifyContent: "center",
+      paddingTop: "100px",
+    }
 })
 );
